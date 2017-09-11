@@ -7,7 +7,7 @@ import React from 'react';
 /*
  * Local import
  */
-import Button from 'src/components/Button';
+import Button from 'src/containers/Button';
 import Counter from 'src/containers/Counter';
 // import store from 'src/store';
 
