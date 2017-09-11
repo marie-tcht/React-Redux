@@ -8,8 +8,6 @@ import PropTypes from 'prop-types';
 /*
  * Local import
  */
-import store from 'src/store';
-import { reset } from 'src/store/reducer';
 
 
 /*
@@ -17,35 +15,21 @@ import { reset } from 'src/store/reducer';
  */
 class Counter extends React.Component {
   /**
-   * Handle Reset
-   */
-  handleReset = () => {
-    // On dispatch l'action
-    // On récupère la fonction reset de reducer (voir import)
-    store.dispatch(reset());
-  }
-
-
-  /**
    * Render
    */
   render() {
-    const { count } = this.props;
+    const { count, reset } = this.props;
     return (
       <div id="counter">
         <div id="counter-votes">{count} votes</div>
-        <button
-          id="counter-reset"
-          onClick={this.handleReset}
-        >
-          Reset
-        </button>
+        <button id="counter-reset" onClick={reset}>Reset</button>
       </div>
     );
   }
 }
 Counter.propTypes = {
   count: PropTypes.number.isRequired,
+  reset: PropTypes.func.isRequired,
 };
 
 

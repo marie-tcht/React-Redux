@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
  * Local import
  */
 import Counter from 'src/components/Counter';
+import { reset } from 'src/store/reducer';
 
 
 /*
@@ -19,16 +20,20 @@ const mapStateToProps = state => ({
 });
 
 // Actions
-// const mapDispatchToProps = dispatch =>({
-//
-// });
+const mapDispatchToProps = dispatch => ({
+  reset: () => {
+    // On dispatch l'action
+    // On récupère la fonction reset de reducer (voir import)
+    dispatch(reset());
+  },
+});
 
 
 /*
  * Container
  */
 // connect(mapStateToProps, mapDispatchToProps)(Counter);
-const createContainer = connect(mapStateToProps);
+const createContainer = connect(mapStateToProps, mapDispatchToProps);
 const CounterContainer = createContainer(Counter);
 
 
