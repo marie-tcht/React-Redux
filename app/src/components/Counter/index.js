@@ -2,6 +2,7 @@
  * Npm import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 /*
@@ -16,41 +17,6 @@ import { reset } from 'src/store/reducer';
  */
 class Counter extends React.Component {
   /**
-   * State
-   * @type {Object}
-   */
-  state = {}
-
-
-  /**
-   * Lifecycles
-   */
-  componentWillMount() {
-    // Mettre à jour une première fois le state interne par rapport au store
-    this.updateState();
-
-
-    // S'abonner au store, pour mettre à jour les changements
-    store.subscribe(this.updateState);
-  }
-
-
-  /*
-   * Update
-   */
-  updateState = () => {
-    // Récupérer le state
-    const state = store.getState();
-
-    // On récupère ce qui m'intéresse
-    const count = state.oui + state.non;
-
-    // On fait un nouveau render
-    this.setState({ count });
-  }
-
-
-  /**
    * Handle Reset
    */
   handleReset = () => {
@@ -64,7 +30,7 @@ class Counter extends React.Component {
    * Render
    */
   render() {
-    const { count } = this.state;
+    const { count } = this.props;
     return (
       <div id="counter">
         <div id="counter-votes">{count} votes</div>
@@ -78,6 +44,9 @@ class Counter extends React.Component {
     );
   }
 }
+Counter.propTypes = {
+  count: PropTypes.number.isRequired,
+};
 
 
 /*
